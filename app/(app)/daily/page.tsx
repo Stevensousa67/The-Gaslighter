@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "Daily Challenge — The Gaslighter",
   description: "Defend today's claim against The Gaslighter. One new challenge every day.",
@@ -39,6 +41,7 @@ export default function DailyPage() {
           size="sm"
           className="gap-1.5 text-xs text-muted-foreground"
           render={<Link href="/" />}
+          nativeButton={false}
         >
           Back to Home
         </Button>
@@ -129,6 +132,7 @@ export default function DailyPage() {
               size="lg"
               className="w-full gap-2 sm:w-auto sm:px-10"
               render={<Link href={chatHref} />}
+              nativeButton={false}
             >
               Accept the Challenge
               <ArrowRightIcon data-icon="inline-end" />

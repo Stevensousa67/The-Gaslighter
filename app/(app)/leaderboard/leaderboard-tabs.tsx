@@ -223,7 +223,7 @@ function ComingSoon() {
         <Separator />
 
         <CardFooter className="justify-center py-6">
-          <Button render={<Link href="/chat" />} variant="outline">
+          <Button render={<Link href="/chat" />} nativeButton={false} variant="outline">
             Accumulate Defeats Now
           </Button>
         </CardFooter>
@@ -250,7 +250,7 @@ function EmptyState() {
           quietly accepting they were wrong. Both outcomes satisfy us.
         </p>
       </div>
-      <Button render={<Link href="/chat" />}>Start the Record Books</Button>
+      <Button render={<Link href="/chat" />} nativeButton={false}>Start the Record Books</Button>
     </div>
   )
 }

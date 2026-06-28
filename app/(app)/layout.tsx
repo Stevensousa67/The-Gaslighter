@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/chat/app-sidebar"
 
@@ -8,7 +9,9 @@ export default function AppLayout({
 }) {
   return (
     <SidebarProvider defaultOpen>
-      <AppSidebar />
+      <Suspense>
+        <AppSidebar />
+      </Suspense>
       <SidebarInset className="min-w-0">
         {children}
       </SidebarInset>

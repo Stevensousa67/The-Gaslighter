@@ -49,6 +49,7 @@ export default async function LeaderboardPage() {
           variant="ghost"
           size="sm"
           render={<Link href="/chat" />}
+          nativeButton={false}
         >
           <ArrowLeftIcon data-icon="inline-start" />
           Back to Chat

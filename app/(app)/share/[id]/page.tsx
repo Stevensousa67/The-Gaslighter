@@ -182,7 +182,7 @@ export default async function SharePage({ params }: Props) {
           <p className="text-sm text-muted-foreground">
             Think you can say something that won&apos;t get destroyed?
           </p>
-          <Button render={<Link href="/chat" />}>
+          <Button render={<Link href="/chat" />} nativeButton={false}>
             <FlameIcon className="size-3.5" />
             Try The Gaslighter
           </Button>

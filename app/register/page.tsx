@@ -99,6 +99,7 @@ export default function RegisterPage() {
             size="sm"
             className="gap-1.5 text-muted-foreground"
             render={<Link href="/" />}
+            nativeButton={false}
           >
             <ArrowLeftIcon className="size-4" />
             Back to home

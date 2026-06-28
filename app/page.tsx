@@ -30,6 +30,7 @@ export default function LandingPage() {
             size="sm"
             className="gap-1.5 text-xs text-muted-foreground"
             render={<Link href="/hall-of-shame" />}
+            nativeButton={false}
           >
             <SkullIcon className="size-3.5" />
             <span className="hidden sm:inline">Hall of Shame</span>
@@ -39,6 +40,7 @@ export default function LandingPage() {
             size="sm"
             className="gap-1.5 text-xs text-muted-foreground"
             render={<Link href="/leaderboard" />}
+            nativeButton={false}
           >
             <TrophyIcon className="size-3.5" />
             <span className="hidden sm:inline">Leaderboard</span>
@@ -48,6 +50,7 @@ export default function LandingPage() {
             variant="ghost"
             size="icon"
             aria-label="View on GitHub"
+            nativeButton={false}
             render={
               <a
                 href="https://github.com"
@@ -93,6 +96,7 @@ export default function LandingPage() {
             size="lg"
             className="gap-2 px-8"
             render={<Link href="/chat" />}
+            nativeButton={false}
           >
             Start Being Wrong
             <ArrowRightIcon data-icon="inline-end" />
@@ -101,6 +105,7 @@ export default function LandingPage() {
             size="lg"
             variant="outline"
             className="gap-2 px-8"
+            nativeButton={false}
             render={
               <a
                 href="https://github.com"

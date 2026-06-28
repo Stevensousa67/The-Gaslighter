@@ -102,6 +102,7 @@ export default async function ProfilePage() {
           size="sm"
           className="gap-1.5 text-muted-foreground"
           render={<Link href="/chat" />}
+          nativeButton={false}
         >
           <ArrowLeftIcon className="size-4" />
           Back to chat

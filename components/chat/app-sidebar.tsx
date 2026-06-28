@@ -144,6 +144,7 @@ export function AppSidebar() {
           variant="outline"
           className="w-full justify-start gap-2 text-sm"
           render={<Link href="/chat" />}
+          nativeButton={false}
         >
           <PlusIcon className="size-4" />
           New Argument
@@ -173,7 +174,7 @@ export function AppSidebar() {
                 <p className="mb-4 text-xs text-muted-foreground">
                   Sign in to keep a history of all your losing debates.
                 </p>
-                <Button size="sm" className="w-full gap-2" render={<Link href="/login" />}>
+                <Button size="sm" className="w-full gap-2" render={<Link href="/login" />} nativeButton={false}>
                   <LogInIcon className="size-3.5" />
                   Sign In
                 </Button>

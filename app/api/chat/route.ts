@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   const selectedPersona = PERSONAS[persona] ?? PERSONAS.academic
 
   const result = streamText({
-    model: google("gemini-2.5-flash"),
+    model: google("gemini-2.5-flash-lite"),
     system: selectedPersona.systemPrompt,
     messages: await convertToModelMessages(messages),
   })

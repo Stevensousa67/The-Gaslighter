@@ -70,6 +70,7 @@ export default async function HallOfShamePage() {
           variant="ghost"
           size="sm"
           render={<Link href="/chat" />}
+          nativeButton={false}
         >
           <ArrowLeftIcon data-icon="inline-start" />
           Back to Chat
@@ -200,7 +201,7 @@ function EmptyState() {
           to admit they argued with an AI. Both are plausible.
         </p>
       </div>
-      <Button render={<Link href="/chat" />}>Be the First Casualty</Button>
+      <Button render={<Link href="/chat" />} nativeButton={false}>Be the First Casualty</Button>
     </div>
   )
 }
