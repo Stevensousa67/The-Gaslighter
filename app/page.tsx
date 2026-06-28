@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { FlameIcon, ArrowRightIcon } from "lucide-react"
+import { FlameIcon, ArrowRightIcon, TrophyIcon, SkullIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -24,7 +24,25 @@ export default function LandingPage() {
           </div>
           <span className="font-semibold tracking-tight">The Gaslighter</span>
         </div>
-        <div className="flex items-center gap-1">
+        <nav className="flex items-center gap-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="gap-1.5 text-xs text-muted-foreground"
+            render={<Link href="/hall-of-shame" />}
+          >
+            <SkullIcon className="size-3.5" />
+            <span className="hidden sm:inline">Hall of Shame</span>
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="gap-1.5 text-xs text-muted-foreground"
+            render={<Link href="/leaderboard" />}
+          >
+            <TrophyIcon className="size-3.5" />
+            <span className="hidden sm:inline">Leaderboard</span>
+          </Button>
           <ThemeToggle />
           <Button
             variant="ghost"
@@ -40,7 +58,7 @@ export default function LandingPage() {
           >
             <GithubIcon className="size-4" />
           </Button>
-        </div>
+        </nav>
       </header>
 
       {/* Hero */}

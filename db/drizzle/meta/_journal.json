@@ -8,6 +8,13 @@
       "when": 1778543425607,
       "tag": "0000_magenta_banshee",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1782612756712,
+      "tag": "0001_omniscient_warhawk",
+      "breakpoints": true
     }
   ]
 }

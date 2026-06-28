@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, integer } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -91,3 +91,18 @@ export const accountRelations = relations(account, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+// ── App tables ──────────────────────────────────────────────────────────────
+
+export const burns = pgTable(
+  "burns",
+  {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    userMessage: text("user_message").notNull(),
+    aiResponse: text("ai_response").notNull(),
+    persona: text("persona").notNull().default("academic"),
+    votes: integer("votes").notNull().default(0),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [index("burns_votes_idx").on(table.votes)],
+);
