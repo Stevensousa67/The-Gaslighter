@@ -10,12 +10,14 @@ interface ShareButtonProps {
   userMessage: string
   aiResponse: string
   persona: PersonaId
+  onShared?: () => void
 }
 
 export function ShareButton({
   userMessage,
   aiResponse,
   persona,
+  onShared,
 }: ShareButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [shared, setShared] = useState(false)
@@ -42,6 +44,7 @@ export function ShareButton({
 
       await navigator.clipboard.writeText(shareUrl)
       setShared(true)
+      onShared?.()
 
       toast.success("Link copied!", {
         description: "Share this AI burn with the world.",

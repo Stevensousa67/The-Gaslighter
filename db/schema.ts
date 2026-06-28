@@ -94,6 +94,67 @@ export const accountRelations = relations(account, ({ one }) => ({
 
 // ── App tables ──────────────────────────────────────────────────────────────
 
+export const conversations = pgTable(
+  "conversations",
+  {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+    title: text("title").notNull().default("New conversation"),
+    persona: text("persona").notNull().default("academic"),
+    wrongCount: integer("wrong_count").notNull().default(0),
+    messageCount: integer("message_count").notNull().default(0),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  },
+  (table) => [index("conversations_userId_idx").on(table.userId)],
+)
+
+export const conversationMessages = pgTable(
+  "conversation_messages",
+  {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    conversationId: text("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
+    role: text("role").notNull(), // "user" | "assistant"
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [index("conv_messages_convId_idx").on(table.conversationId)],
+)
+
+export const userStats = pgTable("user_stats", {
+  userId: text("user_id").primaryKey().references(() => user.id, { onDelete: "cascade" }),
+  totalWrong: integer("total_wrong").notNull().default(0),
+  totalConversations: integer("total_conversations").notNull().default(0),
+  longestStreak: integer("longest_streak").notNull().default(0),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+})
+
+export const achievements = pgTable(
+  "achievements",
+  {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+    achievementKey: text("achievement_key").notNull(),
+    unlockedAt: timestamp("unlocked_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("achievements_userId_idx").on(table.userId),
+  ],
+)
+
+export const conversationRelations = relations(conversations, ({ one, many }) => ({
+  user: one(user, { fields: [conversations.userId], references: [user.id] }),
+  messages: many(conversationMessages),
+}))
+
+export const conversationMessageRelations = relations(conversationMessages, ({ one }) => ({
+  conversation: one(conversations, { fields: [conversationMessages.conversationId], references: [conversations.id] }),
+}))
+
+export const userStatsRelations = relations(userStats, ({ one }) => ({
+  user: one(user, { fields: [userStats.userId], references: [user.id] }),
+}))
+
 export const burns = pgTable(
   "burns",
   {

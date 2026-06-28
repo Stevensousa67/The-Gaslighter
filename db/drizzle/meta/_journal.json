@@ -15,6 +15,13 @@
       "when": 1782612756712,
       "tag": "0001_omniscient_warhawk",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782614766646,
+      "tag": "0002_flowery_calypso",
+      "breakpoints": true
     }
   ]
 }
